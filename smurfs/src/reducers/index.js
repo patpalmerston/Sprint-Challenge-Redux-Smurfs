@@ -56,9 +56,10 @@ export const reducer = (state = initialState, action) => {
         }
 
       case ADD_SMURF_FAILURE:
-      console.log(action.payload.results)
+      
         return {
           ...state,
+          addingSmurf: false,
           error: action.payload
         }
 
