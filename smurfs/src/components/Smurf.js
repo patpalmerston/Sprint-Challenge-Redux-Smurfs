@@ -2,9 +2,13 @@ import React from 'react'
 
 
 
-function Smurf() {
+function Smurf(props) {
   return(
-    <div>Smurf Element</div>
+    <div>
+      <h1>{props.smurf.name}</h1>
+      <h2>{props.smurf.age}</h2>
+      <h4>{props.smurf.height}</h4>
+    </div>
   )
 }
 

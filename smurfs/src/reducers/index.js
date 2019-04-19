@@ -4,7 +4,7 @@ import {
   FETCH_SMURF_START,
   FETCH_SMURF_SUCCESS,
   FETCH_SMURF_FAILURE
-} from './actions';
+} from '../actions';
 
 const initialState =  {
   smurfs: [],
@@ -42,3 +42,5 @@ export const reducer = (state = initialState, action) => {
         return state;
   }
 }
+
+export default reducer;
