@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addSmurf } from '../actions'
 
 
 
@@ -9,19 +11,26 @@ class SmurfForm extends React.Component {
     height: ''
   }
 
-  addSmurf = e => {
-    e.preventDefault();
-    
-  }
+  
 
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  formSubmit = (e) => {
+    e.preventDefault();
+    this.props.addSmurf({
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    })
+    
+  }
+
     render(){
       return(
         <div className='SmurfForm'>
-          <form onSubmit={this.addSmurf}>
+          <form onSubmit={this.formSubmit}>
             <input
               type='text'
               onChange={this.handleInput}
@@ -39,9 +48,9 @@ class SmurfForm extends React.Component {
             <input
               type='text'
               onChange={this.handleInput}
-              placeholder='email'
-              value={this.state.email}
-              name='email' 
+              placeholder='height'
+              value={this.state.height}
+              name='height' 
             />
             <button type='submit'>Add Smurf</button>
           </form>
@@ -51,4 +60,12 @@ class SmurfForm extends React.Component {
 
 }
 
-export default SmurfForm;
+const mapStateToProps = state => {
+  return {
+    error: state.error,
+    addingSmurf: state.addingSmurf
+  }
+}
+
+export default connect(mapStateToProps, { addSmurf })(SmurfForm);
+
